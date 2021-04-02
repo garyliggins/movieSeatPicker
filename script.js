@@ -19,6 +19,11 @@ function updatedSelectedCount() {
 
 }
 
+//copy selected seats into arr
+//map through array
+//return new array indexes
+const seatsIndex = [...selectedSeats]
+
 //movie select event
 movieSelect.addEventListener("change", e => {
     ticketPrice = +e.target.value
