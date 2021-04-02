@@ -6,29 +6,34 @@ const movieSelect = document.getElementById('movie')
 
 let ticketPrice = +movieSelect.value;
 
-console.log(ticketPrice)
 
 //update total and count
-function updatedSelectedCount() {
-   const selectedSeats = document.querySelectorAll('.row .seat.selected');
-   
-  const selectedSeatsCount = selectedSeats.length;
+function updateSelectedCount() {
+    const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
- count.innerText = selectedSeatsCount;
- total.innerText = selectedSeatsCount * ticketPrice;
+    //copy selected seats into arr
+//map through array
+//return new array indexes
+const seatsIndex = [...selectedSeats].map(function(seat) {
+    return [...seats].indexOf(seat)
+})
+
+console.log(seatsIndex)    
+    const selectedSeatsCount = selectedSeats.length;
+
+   count.innerText = selectedSeatsCount;
+   total.innerText = selectedSeatsCount * ticketPrice
+ 
 
 }
 
-//copy selected seats into arr
-//map through array
-//return new array indexes
-const seatsIndex = [...selectedSeats]
+
+
 
 //movie select event
-movieSelect.addEventListener("change", e => {
-    ticketPrice = +e.target.value
-    updatedSelectedCount()
-});
+movieSelect.addEventListener('change', e => {
+    ticketPrice = +e.target.value})
+    updateSelectedCount()
 
 
 //seat click event
@@ -36,6 +41,6 @@ container.addEventListener("click", (e) => {
     if (e.target.classList.contains('seat') && !e.target.classList.contains("occupied")) {
         e.target.classList.toggle("selected")
 
-        updatedSelectedCount()
+        updateSelectedCount()
     }
 })
